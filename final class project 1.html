@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator 3000</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #1d2b6a, #4a00e0);
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+        }
+
+        #calculator {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        #inp {
+            height: 90px;
+            width: 780px;
+            background-color: transparent;
+            color: #ffffff;
+            border: none;
+            text-align: right;
+            font-size: 60px;
+            cursor: not-allowed;
+            outline: none;
+        }
+
+        table {
+            width: 800px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .btn {
+            height: 100px;
+            width: 180px;
+            font-size: 40px;
+            font-weight: bold;
+            border-radius: 20px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #00ff88, #00ffcc);
+            color: #1d2b6a;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        #btn1 {
+            background: linear-gradient(45deg, #4a00e0, #8e2de2);
+        }
+
+        #btn2 {
+            background: linear-gradient(45deg, #ff006e, #ff00b8);
+            color: #ffffff;
+        }
+
+        #btn3 {
+            background: linear-gradient(45deg, #ff0000, #ff4500);
+            font-size: 50px;
+        }
+    </style>
+    <script>
+        function insert(num) {
+            document.getElementById('inp').value += num;
+        }
+
+        function clearInput() {
+            document.getElementById('inp').value = '';
+        }
+
+        function finalValue() {
+            var exp = document.getElementById('inp').value;
+            try {
+                document.getElementById('inp').value = eval(exp);
+            } catch (error) {
+                document.getElementById('inp').value = 'Error';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="calculator">
+        <input id="inp" type="text" placeholder="0" readonly>
+        <table>
+            <tr>
+                <td><button class="btn" onclick="insert(7)">7</button></td>
+                <td><button class="btn" onclick="insert(8)">8</button></td>
+                <td><button class="btn" onclick="insert(9)">9</button></td>
+                <td><button class="btn" id="btn2" onclick="insert('/')">/</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" onclick="insert(4)">4</button></td>
+                <td><button class="btn" onclick="insert(5)">5</button></td>
+                <td><button class="btn" onclick="insert(6)">6</button></td>
+                <td><button class="btn" id="btn2" onclick="insert('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" onclick="insert(1)">1</button></td>
+                <td><button class="btn" onclick="insert(2)">2</button></td>
+                <td><button class="btn" onclick="insert(3)">3</button></td>
+                <td><button class="btn" id="btn2" onclick="insert('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" id="btn3" onclick="clearInput()">C</button></td>
+                <td><button class="btn" onclick="finalValue()">=</button></td>
+                <td><button class="btn" onclick="insert(0)">0</button></td>
+                <td><button class="btn" id="btn2" onclick="insert('*')">x</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
